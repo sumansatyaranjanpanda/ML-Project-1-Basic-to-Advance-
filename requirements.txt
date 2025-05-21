@@ -1,0 +1,4 @@
+pandas
+numpy
+seaborn
+-e . ## it means that setup.py file is there ->go to setup.py
