@@ -1,19 +1,19 @@
 from setuptools import find_packages,setup
 from typing import List
 
-HYPEN_E_DOT='-e .'
-def get_requirements(file_path:str)->List[str]:
+def get_requirements(file_path: str) -> List[str]:
     '''
-    this function will returen the list of requirements
+    This function will return the list of requirements,
+    ignoring editable install markers like "-e ."
     '''
-    requirements=[]
+    requirements = []
     with open(file_path) as file_obj:
-        requirements=file_obj.readlines()
-        requirements=[req.replace('\n','') for req in requirements]
-
-        if HYPEN_E_DOT in requirements:
-            requirements.remove(HYPEN_E_DOT)
+        for line in file_obj:
+            line = line.strip()
+            if line and not line.startswith('-e'):
+                requirements.append(line)
     return requirements
+
     
 setup(
 
