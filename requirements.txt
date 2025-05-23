@@ -5,4 +5,5 @@ ipykernel
 scikit-learn
 catboost
 xgboost
+dill
 -e . ## it means that setup.py file is there ->go to setup.py

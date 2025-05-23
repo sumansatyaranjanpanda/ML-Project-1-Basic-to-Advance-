@@ -3,9 +3,13 @@ import sys
 from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
 
 from sklearn.model_selection import train_test_split
 import pandas as pd
+
+### ✅ This class defines where your files will be saved:'artifacts' folder
 
 @dataclass
 class DataIngestionConfig:
@@ -13,6 +17,7 @@ class DataIngestionConfig:
     test_data_path:str=os.path.join('artifacts','test.csv')
     raw_data_path:str=os.path.join('artifacts','raw.csv')
 
+##✅ This class will use the above paths and do all the work.
 class DataIngestion:
     def __init__(self):
         self.ingestion_config=DataIngestionConfig()
@@ -44,7 +49,10 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj=DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
 
+
+data_transformation_obj=DataTransformation()
+data_transformation_obj.initiate_data_transformation(train_data,test_data)
 
         
