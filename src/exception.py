@@ -1,7 +1,8 @@
 import sys
 import traceback
 import logging
-from logger import logger
+from src.logger import logger 
+
 
 def error_message_detail(error, error_details: sys):
     _, _, exc_tb = sys.exc_info()
