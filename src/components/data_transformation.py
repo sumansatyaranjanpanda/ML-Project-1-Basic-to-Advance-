@@ -12,6 +12,7 @@ from src.exception import CustomException
 from src.logger import logging
 import os
 
+##This dataclass holds the file path to save the preprocessor object (ColumnTransformer)
 @dataclass
 class DataTransformationConfig:
     preprocessor_ob_file=os.path.join('artifacts','proprocessor.pkl')
@@ -86,23 +87,7 @@ class DataTransformation:
             
             # 🏷️ Target columns
             target_column_name="math score"
-
-             # 🏷️ Categorical columns
-            categorical_columns = [
-                'gender',
-                'race/ethnicity',
-                'parental level of education',
-                'lunch',
-                'test preparation course'
-            ]
-
-
-            # 🔢 Numerical columns
-            numerical_columns = [
-                'reading score',
-                'writing score'
-            ]
-
+            
             input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df=train_df[target_column_name]
 

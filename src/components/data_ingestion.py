@@ -5,7 +5,7 @@ from src.logger import logging
 from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
-
+from src.components.model_trainer import ModelTrainer
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
@@ -47,12 +47,23 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys)
 
-if __name__=="__main__":
-    obj=DataIngestion()
-    train_data,test_data=obj.initiate_data_ingestion()
+if __name__ == "__main__":
+    # Step 1: Ingest data
+    obj = DataIngestion()
+    train_data, test_data = obj.initiate_data_ingestion()
 
+    # Step 2: Transform data
+    data_transformation_obj = DataTransformation()
+    train_array, test_array, _ = data_transformation_obj.initiate_data_transformation(train_data, test_data)
 
-data_transformation_obj=DataTransformation()
-data_transformation_obj.initiate_data_transformation(train_data,test_data)
+    # Step 3: Train model
+    model_trainer = ModelTrainer()
+    best_model_result = model_trainer.initiate_model_trainer(train_array, test_array)
+
+    # Step 4: Print Results
+    print("✅ Model Training Completed")
+    print("Best Model:", best_model_result["best_model_name"])
+    print("R2 Score:", best_model_result["best_model_score"])
+    print("Model saved at:", best_model_result["model_path"])
 
         
