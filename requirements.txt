@@ -6,4 +6,5 @@ scikit-learn
 catboost
 xgboost
 dill
+flask
 -e . ## it means that setup.py file is there ->go to setup.py

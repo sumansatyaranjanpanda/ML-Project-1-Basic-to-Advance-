@@ -58,12 +58,12 @@ if __name__ == "__main__":
 
     # Step 3: Train model
     model_trainer = ModelTrainer()
-    best_model_result = model_trainer.initiate_model_trainer(train_array, test_array)
+    result = model_trainer.initiate_model_trainer(train_array, test_array)  ## result  like={"best_model_name": RandomForest,"best_model_score": 0.99,"model_path":"\\\\\"}
 
     # Step 4: Print Results
     print("✅ Model Training Completed")
-    print("Best Model:", best_model_result["best_model_name"])
-    print("R2 Score:", best_model_result["best_model_score"])
-    print("Model saved at:", best_model_result["model_path"])
+    print("Best Model:", result["best_model_name"])
+    print("R2 Score:", result["best_model_score"])
+    print("Model saved at:", result["model_path"])
 
         
