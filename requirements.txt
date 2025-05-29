@@ -7,4 +7,5 @@ catboost
 xgboost
 dill
 flask
+gunicorn
 -e . ## it means that setup.py file is there ->go to setup.py
